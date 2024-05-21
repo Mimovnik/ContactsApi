@@ -1,6 +1,5 @@
-
-
 using FluentValidation;
+using static Contacts.Domain.Constrains.ContactConstrains;
 
 namespace Contacts.Application.Contacts.Commands;
 
@@ -10,11 +9,11 @@ public class CreateContactCommandValidator : AbstractValidator<CreateContactComm
     {
         RuleFor(x => x.FirstName)
             .NotEmpty()
-            .MaximumLength(50);
+            .MaximumLength(FirstNameMaxLength);
 
         RuleFor(x => x.LastName)
             .NotEmpty()
-            .MaximumLength(50);
+            .MaximumLength(LastNameMaxLength);
 
         RuleFor(x => x.Email)
             .NotEmpty()
@@ -22,22 +21,28 @@ public class CreateContactCommandValidator : AbstractValidator<CreateContactComm
 
         RuleFor(x => x.Password)
             .NotEmpty()
-            .MinimumLength(8)
-            .MaximumLength(50);
+            .MinimumLength(PasswordMinLength)
+            .MaximumLength(PasswordMaxLength);
 
+        string categories = string.Join(", ", Enum.GetNames(typeof(Category)));
         RuleFor(x => x.Category)
             .NotEmpty()
-            .MaximumLength(50);
+            .IsEnumName(typeof(Category))
+            .WithMessage($"'Category' must be one of the following values: {categories}");
 
         RuleFor(x => x.Subcategory)
             .NotEmpty()
-            .MaximumLength(50);
+            .MaximumLength(SubcategoryMaxLength);
 
         RuleFor(x => x.PhoneNumber)
             .NotEmpty()
-            .MaximumLength(50);
+            .Length(PhoneNumberLength)
+            .Matches(PhoneNumberPattern)
+            .WithMessage("'Phone Number' must be in the format: 123456789");
 
         RuleFor(x => x.BirthDate)
-            .NotEmpty();
+            .NotEmpty()
+            .Matches(DatePattern)
+            .WithMessage("'Birth Date' must be in the format: yyyy-MM-dd");
     }
 }

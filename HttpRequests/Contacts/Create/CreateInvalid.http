@@ -4,13 +4,13 @@ Content-Type: application/json
 
 {
   "firstName": "John",
-  "lastName": "Cena",
+  "lastName": "",
   "email": "example.com",
   "password": "abc",
-  "category": "private",
-  "subcategory": "friend",
-  "phoneNumber": "111222333",
-  "birthDate": "1977-04-23"
+  "category": "epic",
+  "subcategory": "ffriendfriendfriendfriendfriendfriendfriendfriendfriendfriendfriendfriendfriendfriendfriendfriendfriendfriendfriendriend",
+  "phoneNumber": "111223",
+  "birthDate": "1977.04.23"
 }
 
 // Expected response:

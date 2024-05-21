@@ -39,7 +39,7 @@ public class ContactsController : ApiController
 
         var result = await _mediator.Send(query);
 
-        return result.Match<IActionResult>(
+        return result.Match(
             contacts => Ok(_mapper.Map<IEnumerable<ContactResponse>>(contacts)),
             errors => Problem(errors)
         );

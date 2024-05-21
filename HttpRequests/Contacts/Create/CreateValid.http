@@ -7,7 +7,7 @@ Content-Type: application/json
   "lastName": "Cena",
   "email": "johncena@example.com",
   "password": "WhyIsTherePasswordFieldInContacts?",
-  "category": "private",
+  "category": "Private",
   "subcategory": "friend",
   "phoneNumber": "111222333",
   "birthDate": "1977-04-23"
@@ -22,7 +22,7 @@ Content-Type: application/json
 #   "lastName": "Cena",
 #   "email": "johncena@example.com",
 #   "password": "WhyIsTherePasswordFieldInContacts?",
-#   "category": "private",
+#   "category": "Private",
 #   "subcategory": "friend",
 #   "phoneNumber": "111222333",
 #   "birthDate": "1977-04-23"
