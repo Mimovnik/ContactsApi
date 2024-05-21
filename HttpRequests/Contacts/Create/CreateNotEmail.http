@@ -1,0 +1,17 @@
+@host = https://localhost:7212
+POST {{host}}/contacts
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Cena",
+  "email": "example.com",
+  "password": "WhyIsTherePasswordFieldInContacts?",
+  "category": "private",
+  "subcategory": "friend",
+  "phoneNumber": "111222333",
+  "birthDate": "1977-04-23"
+}
+
+// Expected response:
+# HTTP/1.1 400 Bad Request

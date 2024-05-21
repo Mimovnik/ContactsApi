@@ -1,0 +1,29 @@
+@host = https://localhost:7212
+POST {{host}}/contacts
+Content-Type: application/json
+
+{
+  "firstName": "John",
+  "lastName": "Cena",
+  "email": "johncena@example.com",
+  "password": "WhyIsTherePasswordFieldInContacts?",
+  "category": "private",
+  "subcategory": "friend",
+  "phoneNumber": "111222333",
+  "birthDate": "1977-04-23"
+}
+
+// Expected response:
+# HTTP/1.1 200 OK
+
+# {
+#   "id": "00000000-0000-0000-0000-000000000000",
+#   "firstName": "John",
+#   "lastName": "Cena",
+#   "email": "johncena@example.com",
+#   "password": "WhyIsTherePasswordFieldInContacts?",
+#   "category": "private",
+#   "subcategory": "friend",
+#   "phoneNumber": "111222333",
+#   "birthDate": "1977-04-23"
+# }

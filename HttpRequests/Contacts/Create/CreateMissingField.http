@@ -3,7 +3,6 @@ POST {{host}}/contacts
 Content-Type: application/json
 
 {
-  "firstName": "John",
   "lastName": "Cena",
   "email": "johncena@example.com",
   "password": "WhyIsTherePasswordFieldInContacts?",
@@ -12,3 +11,6 @@ Content-Type: application/json
   "phoneNumber": "111222333",
   "birthDate": "1977-04-23"
 }
+
+// Expected response
+# HTTP/1.1 400 Bad Request

@@ -7,9 +7,8 @@ using Contacts.Application.Contacts.Commands;
 
 namespace Contacts.Api.Controllers;
 
-[ApiController]
 [Route("[controller]")]
-public class ContactsController : ControllerBase
+public class ContactsController : ApiController
 {
     private readonly IMapper _mapper;
     private readonly ISender _mediator;
@@ -29,7 +28,7 @@ public class ContactsController : ControllerBase
 
         return result.Match(
             contact => Ok(_mapper.Map<ContactResponse>(contact)),
-            errors => Problem()
+            errors => Problem(errors)
         );
     }
 
@@ -42,7 +41,7 @@ public class ContactsController : ControllerBase
 
         return result.Match<IActionResult>(
             contacts => Ok(_mapper.Map<IEnumerable<ContactResponse>>(contacts)),
-            error => Problem()
+            errors => Problem(errors)
         );
     }
 }
