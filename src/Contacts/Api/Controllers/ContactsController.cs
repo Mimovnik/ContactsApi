@@ -44,4 +44,17 @@ public class ContactsController : ApiController
             errors => Problem(errors)
         );
     }
+
+    [HttpGet("{id:guid}")]
+    public async Task<IActionResult> GetContact(Guid id)
+    {
+        var query = new GetContactQuery(id);
+
+        var result = await _mediator.Send(query);
+
+        return result.Match(
+            contact => Ok(_mapper.Map<ContactResponse>(contact)),
+            errors => Problem(errors)
+        );
+    }
 }

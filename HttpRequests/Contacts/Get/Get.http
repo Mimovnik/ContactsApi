@@ -1,0 +1,18 @@
+@host = https://localhost:7212
+@id = 90cb2f5c-5b59-4e16-ad8a-f4c331959c0a
+GET {{host}}/contacts/{{id}}
+
+// Expected response:
+# HTTP/1.1 200 OK
+
+# {
+#   "id": "90cb2f5c-5b59-4e16-ad8a-f4c331959c0a",
+#   "firstName": "John",
+#   "lastName": "Cena",
+#   "email": "johncena@example.com",
+#   "password": "WhyIsTherePasswordFieldInContacts?",
+#   "category": "Private",
+#   "subcategory": "friend",
+#   "phoneNumber": "111222333",
+#   "birthDate": "1977-04-23"
+# }
