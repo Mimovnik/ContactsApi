@@ -1,6 +1,13 @@
+using Contacts.Api;
+using Contacts.Application;
+using Contacts.Persistence;
+
 var builder = WebApplication.CreateBuilder(args);
 {
-    builder.Services.AddControllers();
+    builder.Services
+        .AddApi()
+        .AddApplication()
+        .AddPersistence();
 }
 
 var app = builder.Build();
