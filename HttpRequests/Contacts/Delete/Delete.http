@@ -1,0 +1,6 @@
+@host = https://localhost:7212
+@id = 9ca3368e-f64e-469d-9faf-d3b15927e0af
+DELETE {{host}}/contacts/{{id}}
+
+// Expected response:
+# HTTP/1.1 200 OK

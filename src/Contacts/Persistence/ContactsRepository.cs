@@ -22,4 +22,9 @@ public class ContactsRepository : IContactsRepository
     {
         return _contacts.SingleOrDefault(c => c.Id == id);
     }
+
+    public void Remove(Contact contact)
+    {
+        _contacts.Remove(contact);
+    }
 }

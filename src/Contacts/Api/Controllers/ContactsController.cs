@@ -57,4 +57,17 @@ public class ContactsController : ApiController
             errors => Problem(errors)
         );
     }
+
+    [HttpDelete("{id:guid}")]
+    public async Task<IActionResult> RemoveContact(Guid id)
+    {
+        var command = new RemoveContactCommand(id);
+
+        var result = await _mediator.Send(command);
+
+        return result.Match(
+            ok => Ok(),
+            errors => Problem(errors)
+        );
+    }
 }

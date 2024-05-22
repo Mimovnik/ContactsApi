@@ -9,4 +9,5 @@ public interface IContactsRepository
     void Add(Contact contact);
     ErrorOr<IEnumerable<Contact>> GetAll();
     Contact? GetById(Guid id);
+    void Remove(Contact contact);
 }
