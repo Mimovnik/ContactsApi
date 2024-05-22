@@ -17,9 +17,7 @@ public class GetAllContactsQueryHandler : IRequestHandler<GetAllContactsQuery, E
 
     public async Task<ErrorOr<IEnumerable<Contact>>> Handle(GetAllContactsQuery request, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-
-        var contacts = _contactsRepository.GetAll();
+        var contacts = await _contactsRepository.GetAll();
         return contacts;
     }
 }

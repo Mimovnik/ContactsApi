@@ -1,30 +1,39 @@
 using Contacts.Application.Interfaces.Persistence;
 using Contacts.Domain.Entities;
 using ErrorOr;
+using Microsoft.EntityFrameworkCore;
 
 namespace Contacts.Persistence;
 
 public class ContactsRepository : IContactsRepository
 {
-    private static readonly List<Contact> _contacts = new();
+    private readonly ContactsContext _context;
 
-    public void Add(Contact contact)
+    public ContactsRepository(ContactsContext context)
     {
-        _contacts.Add(contact);
+        _context = context;
     }
 
-    public ErrorOr<IEnumerable<Contact>> GetAll()
+    public async Task Add(Contact contact)
     {
-        return _contacts;
+        _context.Contacts.Add(contact);
+
+        await _context.SaveChangesAsync();
     }
 
-    public Contact? GetById(Guid id)
+    public async Task<ErrorOr<IEnumerable<Contact>>> GetAll()
     {
-        return _contacts.SingleOrDefault(c => c.Id == id);
+        return await _context.Contacts.ToListAsync();
     }
 
-    public void Remove(Contact contact)
+    public Task<Contact?> GetById(Guid id)
     {
-        _contacts.Remove(contact);
+        return _context.Contacts.SingleOrDefaultAsync(c => c.Id == id);
+    }
+
+    public async Task Remove(Contact contact)
+    {
+        await Task.CompletedTask;
+        _context.Contacts.Remove(contact);
     }
 }

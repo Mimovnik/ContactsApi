@@ -6,8 +6,8 @@ namespace Contacts.Application.Interfaces.Persistence;
 
 public interface IContactsRepository
 {
-    void Add(Contact contact);
-    ErrorOr<IEnumerable<Contact>> GetAll();
-    Contact? GetById(Guid id);
-    void Remove(Contact contact);
+    Task Add(Contact contact);
+    Task<ErrorOr<IEnumerable<Contact>>> GetAll();
+    Task<Contact?> GetById(Guid id);
+    Task Remove(Contact contact);
 }

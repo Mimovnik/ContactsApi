@@ -19,15 +19,13 @@ public class RemoveContactCommandHandler : IRequestHandler<RemoveContactCommand,
 
     public async Task<ErrorOr<OkResult>> Handle(RemoveContactCommand request, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-
-        var contact = _contactsRepository.GetById(request.Id);
+        var contact = await _contactsRepository.GetById(request.Id);
         if (contact is null)
         {
             return Errors.Contact.NotFound;
         }
 
-        _contactsRepository.Remove(contact);
+        await _contactsRepository.Remove(contact);
         return new OkResult();
     }
 }

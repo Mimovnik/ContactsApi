@@ -7,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
     builder.Services
         .AddApi()
         .AddApplication()
-        .AddPersistence();
+        .AddPersistence(builder.Configuration);
 
     if (builder.Environment.IsDevelopment())
     {

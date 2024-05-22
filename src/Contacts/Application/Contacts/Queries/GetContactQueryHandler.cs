@@ -18,9 +18,7 @@ public class GetContactQueryHandler : IRequestHandler<GetContactQuery, ErrorOr<C
 
     public async Task<ErrorOr<Contact>> Handle(GetContactQuery request, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-
-        var contact = _contactsRepository.GetById(request.Id);
+        var contact = await _contactsRepository.GetById(request.Id);
         if (contact is null)
         {
             return Errors.Contact.NotFound;

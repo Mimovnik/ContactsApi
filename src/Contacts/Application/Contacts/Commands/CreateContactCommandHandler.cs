@@ -17,8 +17,6 @@ public class CreateContactCommandHandler : IRequestHandler<CreateContactCommand,
 
     public async Task<ErrorOr<Contact>> Handle(CreateContactCommand request, CancellationToken cancellationToken)
     {
-        await Task.CompletedTask;
-
         var contact = new Contact
         {
             FirstName = request.FirstName,
@@ -31,7 +29,7 @@ public class CreateContactCommandHandler : IRequestHandler<CreateContactCommand,
             BirthDate = request.BirthDate
         };
 
-        _contactsRepository.Add(contact);
+        await _contactsRepository.Add(contact);
 
         return contact;
     }
