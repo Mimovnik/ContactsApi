@@ -21,9 +21,14 @@ public class ContactsRepository : IContactsRepository
         await _context.SaveChangesAsync();
     }
 
-    public async Task<ErrorOr<IEnumerable<Contact>>> GetAll()
+    public async Task<List<Contact>> GetAll()
     {
         return await _context.Contacts.ToListAsync();
+    }
+
+    public async Task<Contact?> GetByEmail(string email)
+    {
+        return await _context.Contacts.SingleOrDefaultAsync(c => c.Email == email);
     }
 
     public Task<Contact?> GetById(Guid id)
@@ -33,7 +38,7 @@ public class ContactsRepository : IContactsRepository
 
     public async Task Remove(Contact contact)
     {
-        await Task.CompletedTask;
         _context.Contacts.Remove(contact);
+        await _context.SaveChangesAsync();
     }
 }

@@ -11,5 +11,10 @@ public static partial class Errors
             code: "Contact.NotFound",
             description: "The requested contact was not found."
         );
+
+        public static Error EmailAlreadyExists => Error.NotFound(
+            code: "Contact.EmailAlreadyExists",
+            description: "The email address is already in use."
+        );
     }
 }
