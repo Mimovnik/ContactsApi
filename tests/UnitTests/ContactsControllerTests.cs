@@ -1,10 +1,8 @@
 
 using Contacts.Api.Controllers;
-using Contacts.Application.Contacts.Queries;
-using Contacts.Application.Interfaces.Persistence;
-using Contacts.Contracts;
+using Contacts.Application.Contacts.Queries.GetAll;
+using Contacts.Contracts.Contacts;
 using Contacts.Domain.Entities;
-using ErrorOr;
 using MapsterMapper;
 using MediatR;
 using Microsoft.AspNetCore.Mvc;

@@ -1,6 +1,8 @@
 @host = https://localhost:7212
 @id = 9ca3368e-f64e-469d-9faf-d3b15927e0af
+@token = eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ZmMyZGI5My1mNTUyLTRhNjUtYjQ0ZS0zNTc1ZDY5NDE3MDgiLCJuYW1laWQiOiJNYXJlayIsImVtYWlsIjoiTWFyZWtAZXhhbXBsZS5jb20iLCJqdGkiOiI4MzU1MmMzZC1mZDViLTQyODYtYmEwNy05NzQ2MmMzODY4OTMiLCJleHAiOjE3MTY0NjgwODksImlzcyI6IkNvbnRhY3RzQXBpIiwiYXVkIjoiQ29udGFjdHNBcGkifQ.QvOrZSqrSCLKsmyeqkEGdiy4Ti1Mwkn6g_42vw8IHeg
 DELETE {{host}}/contacts/{{id}}
+Authorization: Bearer {{token}}
 
 // Expected response:
 # HTTP/1.1 200 OK

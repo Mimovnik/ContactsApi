@@ -1,0 +1,18 @@
+@host = https://localhost:7212
+POST {{host}}/auth/register
+Content-Type: application/json
+
+{
+  "userName": "Marek",
+  "email": "Marek@example.com",
+  "password": "JestemMarek!"
+}
+
+// Expected response:
+# HTTP/1.1 200 OK
+# {
+#     "id": "d89c2d9a-eb3e-4075-95ff-b920b55aa104",
+#     "userName": "Marek",
+#     "email": "johncena@example.com",
+#     "token": "eyJhb..9dgcnXoY"
+# }

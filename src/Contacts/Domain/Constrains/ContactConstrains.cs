@@ -1,5 +1,3 @@
-using System.Text.RegularExpressions;
-
 namespace Contacts.Domain.Constrains;
 
 public static class ContactConstrains

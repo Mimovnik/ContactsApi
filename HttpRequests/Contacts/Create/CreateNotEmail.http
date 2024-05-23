@@ -1,6 +1,8 @@
 @host = https://localhost:7212
+@token = eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ZmMyZGI5My1mNTUyLTRhNjUtYjQ0ZS0zNTc1ZDY5NDE3MDgiLCJuYW1laWQiOiJNYXJlayIsImVtYWlsIjoiTWFyZWtAZXhhbXBsZS5jb20iLCJqdGkiOiI4MzU1MmMzZC1mZDViLTQyODYtYmEwNy05NzQ2MmMzODY4OTMiLCJleHAiOjE3MTY0NjgwODksImlzcyI6IkNvbnRhY3RzQXBpIiwiYXVkIjoiQ29udGFjdHNBcGkifQ.QvOrZSqrSCLKsmyeqkEGdiy4Ti1Mwkn6g_42vw8IHeg
 POST {{host}}/contacts
 Content-Type: application/json
+Authorization: Bearer {{token}}
 
 {
   "firstName": "John",

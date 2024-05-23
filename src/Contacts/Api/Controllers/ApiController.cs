@@ -1,6 +1,7 @@
 using ErrorOr;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
+using Contacts.Domain.Errors;
 
 namespace Contacts.Api.Controllers;
 
@@ -26,6 +27,11 @@ public class ApiController : ControllerBase
 
     private IActionResult Problem(Error error)
     {
+        if (error == Errors.Authentication.InvalidCredentials)
+        {
+            return AuthorizationProblem(error);
+        }
+
         var statusCode = error.Type switch
         {
             ErrorType.Conflict => StatusCodes.Status409Conflict,
@@ -49,5 +55,12 @@ public class ApiController : ControllerBase
         }
 
         return ValidationProblem(modelStateDictionary);
+    }
+
+    private IActionResult AuthorizationProblem(Error error)
+    {
+        return Problem(
+            statusCode: StatusCodes.Status401Unauthorized,
+            title: error.Description);
     }
 }

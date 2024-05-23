@@ -1,13 +1,13 @@
 using Contacts.Api;
 using Contacts.Application;
-using Contacts.Persistence;
+using Contacts.Infrastructure;
 
 var builder = WebApplication.CreateBuilder(args);
 {
     builder.Services
         .AddApi()
         .AddApplication()
-        .AddPersistence(builder.Configuration);
+        .AddInfrastructure(builder.Configuration);
 
     if (builder.Environment.IsDevelopment())
     {

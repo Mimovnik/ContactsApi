@@ -1,9 +1,12 @@
+using Contacts.Application.Contacts.Commands.Create;
+using Contacts.Application.Contacts.Commands.Remove;
+using Contacts.Application.Contacts.Queries.Get;
+using Contacts.Application.Contacts.Queries.GetAll;
+using Contacts.Contracts.Contacts;
 using MapsterMapper;
 using MediatR;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Contacts.Application.Contacts.Queries;
-using Contacts.Contracts;
-using Contacts.Application.Contacts.Commands;
 
 namespace Contacts.Api.Controllers;
 
@@ -19,6 +22,7 @@ public class ContactsController : ApiController
         _mediator = mediator;
     }
 
+    [Authorize]
     [HttpPost]
     public async Task<IActionResult> CreateContact(CreateContactRequest request)
     {
@@ -58,6 +62,7 @@ public class ContactsController : ApiController
         );
     }
 
+    [Authorize]
     [HttpDelete("{id:guid}")]
     public async Task<IActionResult> RemoveContact(Guid id)
     {
