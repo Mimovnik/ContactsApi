@@ -30,7 +30,7 @@ public class CreateContactCommandHandler : IRequestHandler<CreateContactCommand,
             BirthDate = request.BirthDate
         };
 
-        // Validate thet contact has unique email
+        // Validate that contact has unique email
         var existingContact = await _contactsRepository.GetByEmail(contact.Email);
         if (existingContact != null)
         {

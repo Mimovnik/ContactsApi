@@ -1,0 +1,20 @@
+@host = https://localhost:7212
+@token = eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI5ZmMyZGI5My1mNTUyLTRhNjUtYjQ0ZS0zNTc1ZDY5NDE3MDgiLCJuYW1laWQiOiJNYXJlayIsImVtYWlsIjoiTWFyZWtAZXhhbXBsZS5jb20iLCJqdGkiOiJmYWVkZTBjZi1jZjM4LTQyOWYtYWE4Mi02YjkyODQ3MzI5NzAiLCJleHAiOjE3MTY1ODMxOTIsImlzcyI6IkNvbnRhY3RzQXBpIiwiYXVkIjoiQ29udGFjdHNBcGkifQ.ykXdF7JLxbI3HNl0Uq-Q76OOw3wTyt6s6V6rodVllFU
+@id = 636ab5ac-ee9b-4963-bcf5-023c0f25c7c2
+PUT {{host}}/contacts/{{id}}
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "firstName": "Elon",
+  "lastName": "Musk",
+  "email": "johncena@example.com",
+  "password": "IlOvErOcKeTs",
+  "category": "Private",
+  "subcategory": "friend",
+  "phoneNumber": "111222333",
+  "birthDate": "1988-04-23"
+}
+
+// Expected response:
+# HTTP/1.1 200 OK

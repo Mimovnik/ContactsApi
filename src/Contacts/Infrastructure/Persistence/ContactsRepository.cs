@@ -35,6 +35,14 @@ public class ContactsRepository : IContactsRepository
         return _context.Contacts.SingleOrDefaultAsync(c => c.Id == id);
     }
 
+    public async Task Update(Guid id, Contact newContact)
+    {
+        var old = await _context.Contacts.FindAsync(id);
+        _context.Contacts.Update(old).CurrentValues.SetValues(newContact);
+
+        await _context.SaveChangesAsync();
+    }
+
     public async Task Remove(Contact contact)
     {
         _context.Contacts.Remove(contact);

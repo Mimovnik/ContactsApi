@@ -1,5 +1,4 @@
 using Contacts.Application.Authentication.Common;
-using Contacts.Application.Authentication.Queries.Auth;
 using Contacts.Contracts.Authentication;
 using Mapster;
 

@@ -9,5 +9,6 @@ public interface IContactsRepository
     Task<List<Contact>> GetAll();
     Task<Contact?> GetByEmail(string email);
     Task<Contact?> GetById(Guid id);
+    Task Update(Guid id, Contact newContact);
     Task Remove(Contact contact);
 }

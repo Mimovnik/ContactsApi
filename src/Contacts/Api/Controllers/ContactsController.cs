@@ -1,5 +1,6 @@
 using Contacts.Application.Contacts.Commands.Create;
 using Contacts.Application.Contacts.Commands.Remove;
+using Contacts.Application.Contacts.Commands.Update;
 using Contacts.Application.Contacts.Queries.Get;
 using Contacts.Application.Contacts.Queries.GetAll;
 using Contacts.Contracts.Contacts;
@@ -55,6 +56,20 @@ public class ContactsController : ApiController
         var query = new GetContactQuery(id);
 
         var result = await _mediator.Send(query);
+
+        return result.Match(
+            contact => Ok(_mapper.Map<ContactResponse>(contact)),
+            errors => Problem(errors)
+        );
+    }
+
+    [Authorize]
+    [HttpPut("{id:guid}")]
+    public async Task<IActionResult> UpdateContact(Guid id, UpdateContactRequest request)
+    {
+        var command = _mapper.Map<UpdateContactCommand>((id, request));
+
+        var result = await _mediator.Send(command);
 
         return result.Match(
             contact => Ok(_mapper.Map<ContactResponse>(contact)),
