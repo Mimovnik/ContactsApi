@@ -16,6 +16,11 @@ git clone https://github.com/Mimovnik/ContactsApi
 dotnet run --project src/Contacts
 ```
 
+## Trust connection
+
+Open this link in your browser and proceed to the website to trust this connection.
+[localhost:7212](https://localhost:7212)
+
 ## Used frameworks
 
 - EntityFramework
